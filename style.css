@@ -1,66 +1,76 @@
 body {
+    --left-wall-hover-idx: -1;
     --player-x: -1;
     font-size: 2vh;
     overflow: hidden;
 }
 
-.fwd-left-interact {
+.fwd-left-text {
+    display: inline-block;
     visibility: hidden;
+    text-decoration: none;
+    width: 6.5vh;
+    height: 6.5vh;
 }
 
-.fwd:hover .fwd-left-interact {
-    position: absolute;
+.fwd-left-text a img {
+    width: 6.5vh;
+    height: 6.5vh;
+    z-index: -1001;
+    position: relative;
+}
+
+.fwd-left-text a:visited {
+    color: blue;
+}
+
+.fwd:hover .fwd-left-text {
+    position: fixed;
     visibility: visible;
-    top: calc(1vh * (90 - 2 * var(--fwd-idx)));
-    left: 32vh;
-    z-index: 1000;
+    top: calc(1vh * (50 - 7 * var(--fwd-idx)));
+    left: 109vh;
 }
 
-.fwd-left {
+.fwd-right-text {
+    display: inline-block;
     visibility: hidden;
+    text-decoration: none;
+    width: 6.5vh;
+    height: 6.5vh;
 }
 
-.fwd:hover .fwd-left {
-    position: absolute;
+.fwd-right-text:visited {
+    color: blue;
+}
+
+.fwd-right-text a img {
+    width: 6.5vh;
+    height: 6.5vh;
+    z-index: -1001;
+    position: relative;
+}
+
+.fwd:hover .fwd-right-text {
+    position: fixed;
     visibility: visible;
-    top: calc(1vh * (90 - 2 * var(--fwd-idx)));
-    left: 40vh;
-    z-index: 1000;
-}
-
-.fwd-right {
-    visibility: hidden;
-}
-
-.fwd:hover .fwd-right {
-    position: absolute;
-    visibility: visible;
-    top: calc(1vh * (90 - 2 * var(--fwd-idx)));
-    left: 56vh;
-    z-index: 1000;
-}
-
-.fwd-right-interact {
-    visibility: hidden;
-}
-
-.fwd:hover .fwd-right-interact {
-    position: absolute;
-    visibility: visible;
-    top: calc(1vh * (90 - 2 * var(--fwd-idx)));
-    left: 64vh;
-    z-index: 1000;
+    top: calc(1vh * (50 - 7 * var(--fwd-idx)));
+    left: 127vh;
 }
 
 .fwd-text {
-    position: absolute;
-    top: calc(1vh * (90 - 2 * var(--fwd-idx)));
-    left: 26.5vh;
+    position: fixed;
+    top: calc(1vh * (50 - 7 * var(--fwd-idx)));
+    left: 96vh;
     text-align: center;
-    z-index: 100;
+    z-index: -1901;
     display: inline-block;
     width: 48vh;
-    height: 2vh;
+    height: 7vh;
+}
+
+.fwd-text img {
+    width: 6.5vh;
+    height: 6.5vh;
 }
 
 .fwd:hover {
@@ -68,9 +78,10 @@ body {
 }
 
 #view-area {
-    position: absolute;
+    position: fixed;
     top: calc(100vw * pow(max(0, 0 - var(--player-x)), 1000));
     left: 0;
+    background-color: #fff;
     pointer-events: none;
     display: inline-block;
     width: 96vh;
@@ -113,7 +124,6 @@ body {
 #right-walls img {
     margin: 0 0 0 0;
     padding: 0 0 0 0;
-    /* right: calc(-48vh * (pow(2, var(--player-x)) - 1)); */
     right: calc(-48vh * (pow(2, var(--player-x)) - 1));
 }
 
@@ -124,7 +134,8 @@ body {
     vertical-align: top;
     margin: 0 0 0 0;
     padding: 0 0 0 0;
-    width: calc(24vh * pow(0.5, var(--wall-idx) - var(--player-x)));
+    --wall-width: calc(24vh * pow(0.5, var(--wall-idx) - var(--player-x)));
+    width: var(--wall-width);
     top: calc(30vh * (1 - pow(0.5, var(--wall-idx) - var(--player-x))));
 }
 
@@ -146,4 +157,70 @@ body {
     position: relative;
     width: calc(96vh * pow(0.5, max(var(--wall-idx) - var(--player-x), 0)));
     top: calc(200vh * pow(min(max(var(--player-x) - var(--wall-idx), 0), 1), 1000));
+}
+
+.overlay {
+    position: fixed;
+    visibility: visible;
+    display: inline-block;
+    /* border: 2px black solid; */
+    background-color: #ffff;
+    height: 50vh;
+    z-index: -1;
+    pointer-events: none;
+}
+
+#overlay-bottom-left {
+    width: 16vh;
+    top: calc(1vh * (50 - 7 * var(--player-x) + 7));
+    left: 99.5vh;
+}
+
+#overlay-bottom {
+    width: 9vh;
+    top: calc(1vh * (50 - 7 * var(--player-x) + 14));
+    left: 115.5vh;
+}
+
+#overlay-bottom-tip {
+    width: 9vh;
+    top: calc(1vh * (50 - 7 * var(--player-x) + 7));
+    left: 115.5vh;
+    height: 7vh;
+    backdrop-filter: blur(2px);
+    background-color: #fff8;
+}
+
+#overlay-bottom-right {
+    width: 16vh;
+    top: calc(1vh * (50 - 7 * var(--player-x) + 7 - 0.5));
+    left: 124.5vh;
+}
+
+#overlay-top-left {
+    width: 16vh;
+    top: calc(1vh * (50 - 7 * var(--player-x) - 50));
+    left: 99.5vh;
+}
+
+#overlay-top {
+    width: 9vh;
+    top: calc(1vh * (50 - 7 * var(--player-x) - 7 - 50));
+    left: 115.5vh;
+}
+
+#overlay-top-tip {
+    width: 9vh;
+    top: calc(1vh * (50 - 7 * var(--player-x) - 7 - 0.5));
+    left: 115.5vh;
+    height: 7vh;
+    backdrop-filter: blur(2px);
+    background-color: #fff8;
+    z-index: 1000;
+}
+
+#overlay-top-right {
+    width: 16vh;
+    top: calc(1vh * (50 - 7 * var(--player-x) - 50));
+    left: 124.5vh;
 }
