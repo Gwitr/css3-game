@@ -84,7 +84,7 @@ body {
     background-color: #fff;
     pointer-events: none;
     display: inline-block;
-    width: 96vh;
+    width: 86vh;
     height: 60vh;
     overflow: hidden;
     white-space: nowrap;
@@ -93,7 +93,7 @@ body {
 }
 
 #walls {
-    width: 96vh;
+    width: 86vh;
     height: 60vh;
     font-size: 0;
     position: relative;
@@ -108,7 +108,7 @@ body {
 }
 
 #left-walls img {
-    left: calc(-48vh * (pow(2, var(--player-x)) - 1));
+    left: calc(-43vh * (pow(2, var(--player-x)) - 1));
     margin: 0 0 0 0;
     padding: 0 0 0 0;
 }
@@ -124,7 +124,7 @@ body {
 #right-walls img {
     margin: 0 0 0 0;
     padding: 0 0 0 0;
-    right: calc(-48vh * (pow(2, var(--player-x)) - 1));
+    right: calc(-43vh * (pow(2, var(--player-x)) - 1));
 }
 
 #walls div img {
@@ -134,7 +134,7 @@ body {
     vertical-align: top;
     margin: 0 0 0 0;
     padding: 0 0 0 0;
-    --wall-width: calc(24vh * pow(0.5, var(--wall-idx) - var(--player-x)));
+    --wall-width: calc(21.5vh * pow(0.5, var(--wall-idx) - var(--player-x)));
     width: var(--wall-width);
     top: calc(30vh * (1 - pow(0.5, var(--wall-idx) - var(--player-x))));
 }
@@ -150,12 +150,12 @@ body {
     padding: 0 0 0 0;
     position: relative;
     top: calc(-60vh + 30vh - 30vh * pow(0.5, var(--wall-idx) - var(--player-x)));
-    left: calc(48vh - 48vh * pow(0.5, var(--wall-idx) - var(--player-x)));
+    left: calc(43vh - 43vh * pow(0.5, var(--wall-idx) - var(--player-x)));
 }
 
 #front img {
     position: relative;
-    width: calc(96vh * pow(0.5, max(var(--wall-idx) - var(--player-x), 0)));
+    width: calc(86vh * pow(0.5, max(var(--wall-idx) - var(--player-x), 0)));
     top: calc(200vh * pow(min(max(var(--player-x) - var(--wall-idx), 0), 1), 1000));
 }
 
@@ -163,7 +163,6 @@ body {
     position: fixed;
     visibility: visible;
     display: inline-block;
-    /* border: 2px black solid; */
     background-color: #ffff;
     height: 50vh;
     z-index: -1;
