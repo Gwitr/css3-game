@@ -1,0 +1,149 @@
+body {
+    --player-x: -1;
+    font-size: 2vh;
+    overflow: hidden;
+}
+
+.fwd-left-interact {
+    visibility: hidden;
+}
+
+.fwd:hover .fwd-left-interact {
+    position: absolute;
+    visibility: visible;
+    top: calc(1vh * (90 - 2 * var(--fwd-idx)));
+    left: 32vh;
+    z-index: 1000;
+}
+
+.fwd-left {
+    visibility: hidden;
+}
+
+.fwd:hover .fwd-left {
+    position: absolute;
+    visibility: visible;
+    top: calc(1vh * (90 - 2 * var(--fwd-idx)));
+    left: 40vh;
+    z-index: 1000;
+}
+
+.fwd-right {
+    visibility: hidden;
+}
+
+.fwd:hover .fwd-right {
+    position: absolute;
+    visibility: visible;
+    top: calc(1vh * (90 - 2 * var(--fwd-idx)));
+    left: 56vh;
+    z-index: 1000;
+}
+
+.fwd-right-interact {
+    visibility: hidden;
+}
+
+.fwd:hover .fwd-right-interact {
+    position: absolute;
+    visibility: visible;
+    top: calc(1vh * (90 - 2 * var(--fwd-idx)));
+    left: 64vh;
+    z-index: 1000;
+}
+
+.fwd-text {
+    position: absolute;
+    top: calc(1vh * (90 - 2 * var(--fwd-idx)));
+    left: 26.5vh;
+    text-align: center;
+    z-index: 100;
+    display: inline-block;
+    width: 48vh;
+    height: 2vh;
+}
+
+.fwd:hover {
+    --player-x: var(--fwd-idx);
+}
+
+#view-area {
+    position: absolute;
+    top: calc(100vw * pow(max(0, 0 - var(--player-x)), 1000));
+    left: 0;
+    pointer-events: none;
+    display: inline-block;
+    width: 96vh;
+    height: 60vh;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+#walls {
+    width: 96vh;
+    height: 60vh;
+    font-size: 0;
+    position: relative;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+#walls div {
+    position: absolute;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+#left-walls img {
+    left: calc(-48vh * (pow(2, var(--player-x)) - 1));
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+#right-walls {
+    direction: rtl;
+    position: relative;
+    right: 0;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+#right-walls img {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    /* right: calc(-48vh * (pow(2, var(--player-x)) - 1)); */
+    right: calc(-48vh * (pow(2, var(--player-x)) - 1));
+}
+
+#walls div img {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    position: relative;
+    vertical-align: top;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    width: calc(24vh * pow(0.5, var(--wall-idx) - var(--player-x)));
+    top: calc(30vh * (1 - pow(0.5, var(--wall-idx) - var(--player-x))));
+}
+
+#right-walls img {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    transform: scaleX(-1);
+}
+
+#front {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    position: relative;
+    top: calc(-60vh + 30vh - 30vh * pow(0.5, var(--wall-idx) - var(--player-x)));
+    left: calc(48vh - 48vh * pow(0.5, var(--wall-idx) - var(--player-x)));
+}
+
+#front img {
+    position: relative;
+    width: calc(96vh * pow(0.5, max(var(--wall-idx) - var(--player-x), 0)));
+    top: calc(200vh * pow(min(max(var(--player-x) - var(--wall-idx), 0), 1), 1000));
+}
